@@ -19,5 +19,7 @@ Todo:
 - schema validation & discovery (json schema)
 - CW dashboards for queue metrics & alerting
 - auditing resources should be seperate from any single service (it's cross cutting)
+- take into account idempotency of message processing
+- add correlation information from bus message to sqs message for request tracing
 
 ![Solution diagram](diagram.png)

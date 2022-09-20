@@ -12,3 +12,8 @@ Resources:
       Targets:
         - Arn: !GetAtt MainQueue.Arn
           Id: ${self:service}-${self:provider.stage}-message-processing-rule
+          # InputTransformer:
+          #   InputPathsMap:
+          #     detail: "$.detail"
+          #     event-id: "$.id"
+          #   InputTemplate: '{"data": "<detail>", "event-id": "<event-id>"}'
