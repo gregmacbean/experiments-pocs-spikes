@@ -1,6 +1,6 @@
 Hi!
 
-This experiment is to show how we can use event bridge to integration different services through messages (Events & Commands)
+This poc is to show how we can use event bridge to integration different services through messages (Events & Commands)
 
 For Events:
 - Any service can publish interesting Events eg. OrganisatonCreated
@@ -16,7 +16,7 @@ For Commands:
 Todo:
 - error handling at the bus level
 - archiving of bus messages for replay (if necessary)
-- schema validation & discovery
+- schema validation & discovery (json schema)
 - CW dashboards for queue metrics & alerting
 - auditing resources should be seperate from any single service (it's cross cutting)
 
