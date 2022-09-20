@@ -1,0 +1,24 @@
+service: service1
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: ap-southeast-2
+  stage: ${opt:stage, 'development'}
+
+functions:
+  consumer:
+    handler: handler.consumer
+    events:
+      - sqs:
+          arn:
+            Fn::GetAtt:
+              - MainQueue
+              - Arn
+          batchSize: 1
+
+resources:
+  - ${file(resources/rules.yml)}
+  - ${file(resources/queues.yml)}
+  - ${file(resources/auditing.yml)}

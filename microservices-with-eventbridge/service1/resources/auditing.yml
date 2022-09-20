@@ -1,0 +1,20 @@
+Resources:
+  AuditLogs:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: /aws/events/audit-events/${self:service}-${self:provider.stage}
+
+  # todo, improve this. the name is not unique and the policy is too broad.
+  AuditLogsResourcePolicy:
+    Type: AWS::Logs::ResourcePolicy
+    Properties:
+      PolicyName: CanLog
+      PolicyDocument: '{"Statement":[{"Action":["logs:PutLogEvents","logs:CreateLogStream"],"Effect":"Allow","Principal":{"Service":"events.amazonaws.com"},"Resource":"arn:aws:logs:*:*:*"}],"Version":"2012-10-17"}'
+
+  AuditRule:
+    Type: AWS::Events::Rule
+    Properties:
+      EventPattern: { "source": ["mysystem"] }
+      Targets:
+        - Arn: !GetAtt AuditLogs.Arn
+          Id: ${self:service}-${self:provider.stage}-audit-events

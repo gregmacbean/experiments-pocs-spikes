@@ -1,0 +1,24 @@
+service: service2
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: ap-southeast-2
+  stage: ${opt:stage, 'development'}
+
+  # note, should be done via a managed policy. alos consider specifying a bus
+  iamRoleStatements:
+    - Effect: Allow
+      Action: "events:PutEvents"
+      Resource:
+        - !Sub "arn:aws:events:*:${AWS::AccountId}:event-bus/*"
+
+functions:
+  producer:
+    handler: handler.producer
+    events:
+      - http:
+          path: /produce
+          method: post
+          cors: true

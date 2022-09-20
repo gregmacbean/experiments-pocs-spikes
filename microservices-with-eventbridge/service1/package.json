@@ -1,0 +1,9 @@
+{
+  "name": "service1",
+  "version": "1.0.0",
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "serverless-lift": "^1.1.2"
+  }
+}
