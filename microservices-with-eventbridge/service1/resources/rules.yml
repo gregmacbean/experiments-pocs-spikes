@@ -1,9 +1,14 @@
 # add rules to "listen for" events the service is interested in, or commands the service owns.
 Resources:
-  SomeEventRule:
+  MessageProcessingRule:
     Type: AWS::Events::Rule
     Properties:
-      EventPattern: { "source": ["mysystem"], "detail-type": ["SomeEvent"] }
+      EventPattern:
+        source:
+          - mysystem
+        detail-type:
+          - SomeEvent
+          - SomeOtherEvent
       Targets:
         - Arn: !GetAtt MainQueue.Arn
-          Id: ${self:service}-${self:provider.stage}-SomeEvent
+          Id: ${self:service}-${self:provider.stage}-message-processing-rule

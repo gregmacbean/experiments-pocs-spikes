@@ -1,6 +1,11 @@
 const consumer = async (event) => {
   for (const record of event.Records) {
-    console.log("RECORD", record);
+    const { detail } = JSON.parse(record.body);
+
+    console.log(
+      `Message ID: ${record.messageId}, Event Source: ${record.eventSource}`,
+      detail
+    );
   }
 };
 
