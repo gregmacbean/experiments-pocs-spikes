@@ -9,8 +9,8 @@ For Events
 - Todo: Events should be validated against an json schema
 
 For Commands
-- Any service can send a Command to the bus
-- Commands are owned by a single service
-- Only the owning service can/should create a rule & target to process the Command
-- As before the services pulls the Command onto a queue for processing
+- Any service can send a Command to the bus eg. SendNotification
+- Commands are owned by a single service - the owner
+- Only the owner should create a rule & target to process the Command
+- As before the services pulls the Command onto a queue for processing with a dlq
 - Todo: Commands should be validated against a json schema

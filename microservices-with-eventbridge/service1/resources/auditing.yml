@@ -4,11 +4,11 @@ Resources:
     Properties:
       LogGroupName: /aws/events/audit-events/${self:service}-${self:provider.stage}
 
-  # todo, improve this. the name is not unique and the policy is too broad.
+  # todo, improve this. the policy is too broad.
   AuditLogsResourcePolicy:
     Type: AWS::Logs::ResourcePolicy
     Properties:
-      PolicyName: CanLog
+      PolicyName: ${self:service}-${self:provider.stage}-audit-logs-policy
       PolicyDocument: '{"Statement":[{"Action":["logs:PutLogEvents","logs:CreateLogStream"],"Effect":"Allow","Principal":{"Service":"events.amazonaws.com"},"Resource":"arn:aws:logs:*:*:*"}],"Version":"2012-10-17"}'
 
   AuditRule:

@@ -1,4 +1,4 @@
-POST https://mev52dp9f5.execute-api.ap-southeast-2.amazonaws.com/development/produce HTTP/1.1
+POST https://qs6vjep5b9.execute-api.ap-southeast-2.amazonaws.com/development/produce HTTP/1.1
 content-type: application/json
 
 {
