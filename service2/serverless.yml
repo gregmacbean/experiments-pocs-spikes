@@ -7,7 +7,7 @@ provider:
   region: ap-southeast-2
   stage: ${opt:stage, 'development'}
 
-  # note, should be done via a managed policy. alos consider specifying a bus
+  # todo, should be done via a managed policy. alos consider specifying a bus
   iamRoleStatements:
     - Effect: Allow
       Action: "events:PutEvents"
